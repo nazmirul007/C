@@ -1,0 +1,28 @@
+import java.io.*;
+import java.net.*;
+
+	class client
+	{
+		public static void main(String argv[]) throws Exception
+		{
+
+			String sentence;
+			String modifiedSentence;
+
+			BufferedReader userInput = new BufferedReader( new InputStreamReader(System.in));
+			Socket clientSocket = new Socket("10.12.6.151", 5000);
+
+			DataOutputStream serverOutput = new DataOutputStream(clientSocket.getOutputStream());
+			BufferedReader serverInput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+
+			System.out.print("Chat : ");
+
+			sentence = userInput.readLine();
+			serverOutput.writeBytes(sentence + '\n');
+			modifiedSentence = serverInput.readLine();
+
+			System.out.println("Server : " + modifiedSentence);
+			clientSocket.close();
+		}
+   }
