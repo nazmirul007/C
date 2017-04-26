@@ -4,24 +4,24 @@
 int main(){
 
 struct stat st;
-stat("alphabet.txt", &st);
+stat("text.txt", &st);
 int size = (st.st_size-1);
 
 unsigned char buffer[size];
 FILE *ptr;
-ptr = fopen("test.bin","rb");  // r for read, b for binary
+ptr = fopen("test.bin","rb");  
 
 FILE *file;
 file = fopen("reverse.txt","w");
 if(file == NULL)
 {
-    printf("Error opening file!\n");
+    printf("Error!\n");
     exit(1);
 }
 
 if (ptr == NULL)
 {
-    printf("Error opening file!\n");
+    printf("Error!\n");
     exit(1);
 }
 
