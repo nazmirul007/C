@@ -7,36 +7,36 @@ int main(){
 
 
 struct stat st;
-stat("alphabet.txt", &st);	//get the size of alphabet text
+stat("text.txt", &st);	
 int size = (st.st_size-1);
 
-unsigned char buffer[size];	//declare char array with alphabet text size
+unsigned char buffer[size];	
 
-FILE *write_ptr;			//create file
-write_ptr = fopen("test.bin","wb"); 	//create file
+FILE *write_ptr;			
+write_ptr = fopen("test.bin","wb"); 	
 
 FILE *file;
-file = fopen("alphabet.txt","r");
+file = fopen("textt.txt","r");
 
 if(write_ptr == NULL)			
 {
-    printf("Error opening file!\n");
+    printf("Error!\n");
     exit(1);
 }
 
 if (file == NULL)
 {
-    printf("Error opening file!\n");
+    printf("Error!\n");
     exit(1);
 }
 
-fread(buffer,sizeof(buffer),1,file); 	//read file alphabet and store it in buffer char array
+fread(buffer,sizeof(buffer),1,file); 	
 
 for(int i=0;i<size;i++)			
-	printf("%c",buffer[i]);		//check buffer element
+	printf("%c",buffer[i]);		
 
 
-fwrite(buffer,sizeof(buffer), 1, write_ptr );	//create file test in binary 
+fwrite(buffer,sizeof(buffer), 1, write_ptr );	
 
 fclose(write_ptr);
 fclose(file);
